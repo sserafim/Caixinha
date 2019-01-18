@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CategoryService } from '../shared/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor() { }
+  categories: Observable<any>;
+
+  constructor(private categoryService: CategoryService ) {
+  }
 
   ngOnInit() {
+      this.categories = this.categoryService.getAll();
+  }
+
+  excluir(categoryId) {
+        // tslint:disable-next-line:curly
+        if (!confirm('Confirma a exclusão dessa Categoria')) return;
+
+        this.categoryService.delete(categoryId);
   }
 
 }
