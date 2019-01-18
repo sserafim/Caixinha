@@ -12,6 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 
+import { CalendarModule } from 'primeng/calendar';
+import { IMaskModule } from 'angular-imask';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +27,9 @@ import { environment } from 'src/environments/environment';
     AngularFireAuthModule,
     FormsModule,
     NgbModule,
-    CustomFormsModule
+    CustomFormsModule,
+    CalendarModule,
+    IMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
