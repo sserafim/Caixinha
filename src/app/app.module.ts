@@ -12,8 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 
-import { CalendarModule } from 'primeng/calendar';
-import { IMaskModule } from 'angular-imask';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { IMaskModule } from 'angular-imask';
     FormsModule,
     NgbModule,
     CustomFormsModule,
-    CalendarModule,
-    IMaskModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

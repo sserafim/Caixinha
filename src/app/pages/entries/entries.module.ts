@@ -9,8 +9,9 @@ import { EntriesRoutingModule } from './entries-routing.module';
 import { EntrieListComponent } from './entrie-list/entrie-list.component';
 import { EntrieFormComponent } from './entrie-form/entrie-form.component';
 
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { CalendarModule } from 'primeng/calendar';
-import { IMaskModule } from 'angular-imask';
+
 
 @NgModule({
   declarations: [EntrieListComponent, EntrieFormComponent],
@@ -21,7 +22,8 @@ import { IMaskModule } from 'angular-imask';
     NgbModule,
     CustomFormsModule,
     CalendarModule,
-    IMaskModule
+    CurrencyMaskModule
+    
   ]
 })
 export class EntriesModule { }

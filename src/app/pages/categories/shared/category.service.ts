@@ -7,12 +7,8 @@ import { map } from 'rxjs/operators';
 })
 export class CategoryService {
 
-  constructor(private db: AngularFireDatabase) {
-
-  }
-
-
-
+  constructor(private db: AngularFireDatabase) {}
+  
  ngOnInit() {
  }
 

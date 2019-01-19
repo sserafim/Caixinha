@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class="col-md">
-    <a routerLink="/categories" class="btn btn-success float-right">
+    <a routerLink="/entries" class="btn btn-success float-right">
       < voltar 
     </a>
   </div>
@@ -26,40 +26,98 @@
     
     
   <div class="form-row">  
-      <div class="form-group col-md-2">
-          <label for="tipoDespesa">Categoria</label>
-          <select #tipoDespesa="ngModel" [(ngModel)]="entrie.tipoDespesa" name="tipoDespesa" id="tipoDespesa"  class="form-control" required>     
-              <option value="despesa">Despesa</option>
-              <option value="receita">Receita</option>        
+    
+    <!--Tipo Despesa Lançamento-->
+    <div class="form-group col-md-2">
+          <label for="tipoDespesa">Tipo</label>
+          <select #tipoDespesa="ngModel" [(ngModel)]="entrie.tipoDespesa" name="tipoDespesa" id="tipoDespesa"  class="form-control" required>                         
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>        
           </select>
       </div>
      
+      <!--Nome Lançamento-->
         <div class="form-group col-md-5">
           <label for="nome">Lançamento</label>
           <input #nome="ngModel" [(ngModel)]="entrie.nome" name="nome" id="nome" type="text" class="form-control" required>
         </div>   
 
+        <!--Valor Lançamento-->
         <div class="form-group col-md-3">
           <label for="valor">Preço</label>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                 </div>
-                <input [imask]="imaskConfig" #valor="ngModel" [(ngModel)]="entrie.valor" name="valor" id="valor" type="number" class="form-control text-right" required [min]="0"> 
+                <input currencyMask  
+                      [options]="{ prefix: 'Rs ', thousands: '.', decimal: ',' }"                        
+                       #valor="ngModel" 
+                       [(ngModel)]="entrie.valor" 
+                       name="valor" 
+                       id="valor" 
+                       type="int" 
+                       class="form-control text-right"  
+                       required [min]="0"> 
            
             </div>   
-       </div>   
+       </div>
+
+          <!--Data Lançamento-->       
+          <div class="form-group col-md-2">
+            <label for="data">Data</label>
+            <p-calendar #data="ngModel" 
+                        [(ngModel)]="entrie.data" 
+                        dateFormat="dd/mm/yy" 
+                        inputStyleClass="form-control" 
+                        name="data"
+                        id="data"
+                        dataType="string"
+                        [locale]="ptBR"
+                        [showButtonBar]="true"
+                        ></p-calendar>
+          </div>   
+      
+    
    </div>   
+
+   
    <div class="form-row">
-        <div class="form-group col-md-8">
+
+        <!--Pago / pendente Lançamento-->
+        <div class="form-group col-md-2">
+            <label for="pago">Pago</label>
+            <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" name="pago" id="pago" #pago="ngModel" [(ngModel)]="entrie.pago">
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" value=true> Pago
+                </label>
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" value=false> Pendente
+                </label>
+            </div>          
+        </div> 
+        
+
+        <!--Lista Categoria Lançamento-->
+        <div class="form-group col-md-3">
+            <label for="category">Categoria</label>
+            <select #category="ngModel" [(ngModel)]="entrie.category" name="category" id="category"  class="form-control" required>     
+                <option *ngFor="let c of categories$ | async" [value]="c.key">
+                    {{ c.nome }}                                    
+            </select>
+        </div>
+
+        <!--Descrição Lançamento-->
+        <div class="form-group col-md-7">
           <label for="descricao">Descrição</label>
           <input #descricao="ngModel" [(ngModel)]="entrie.descricao" name="descricao" id="descricao" type="text" class="form-control" required>
-        </div>   
-    </div>  
+        </div>  
+
+  </div>  
         
-        <button class="btn btn-primary mr-1">Save</button>
-        <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+        <button type="button" (click)="delete()" class="btn btn-danger float-right btn-sm">Delete</button>
+        <button class="btn btn-primary mr-1 float-right">Save</button>
+
 
     </form>
+     <!-- <pre>{{ entrie | json }}</pre>   -->
   </div>
 </div>

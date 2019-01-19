@@ -34,7 +34,6 @@ export class CategoryFormComponent implements OnInit {
   }
 
   delete() {
-    // tslint:disable-next-line:curly
     if (!confirm('Confirma a exclusão dessa Categoria')) return;
 
         this.categoryService.delete(this.id);

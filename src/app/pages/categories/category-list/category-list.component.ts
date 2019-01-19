@@ -18,8 +18,7 @@ export class CategoryListComponent implements OnInit {
       this.categories = this.categoryService.getAll();
   }
 
-  excluir(categoryId) {
-        // tslint:disable-next-line:curly
+  excluir(categoryId) {        
         if (!confirm('Confirma a exclusão dessa Categoria')) return;
 
         this.categoryService.delete(categoryId);
