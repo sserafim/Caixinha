@@ -12,7 +12,7 @@ import { EntrieService } from '../shared/entrie.service';
 })
 export class EntrieFormComponent implements OnInit {
 
-  entrie: {} = new Entrie;
+  entrie: {} = Entrie;
   categories$;
   id;
 

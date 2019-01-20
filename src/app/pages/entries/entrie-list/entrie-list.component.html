@@ -20,19 +20,26 @@
   <thead>
     <tr class="bg-primary text-light">
       <th>Nome</th>
-      <th>Descrição</th>
-      <th>Valor</th>
-      <th>Tipo da Despesa</th>
-      <th></th>
+      <th>Nome Categoria</th>
+      <th class="text-right">Valor</th>
+      <th class="text-center">Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let entrie of entries | async">
-      <td>{{entrie.nome}}</td>
-      <td>{{entrie.descricao}}</td>
-      <td>{{entrie.valor}}</td>
-      <td>{{entrie.tipoDespesa}}</td>
       <td>
+        <strong>{{entrie.nome}}</strong><br>
+        <small class="text-success">{{entrie.data}}</small><br>
+        <small *ngIf="entrie.descricao">{{entrie.descricao}}</small>
+      </td>
+      <td>{{entrie.category}}</td>
+      <td class="text-right">
+      <strong [class.text-success]="entrie.tipoDespesa === 'receita'" [class.text-danger]="entrie.tipoDespesa === 'despesa'">
+          {{entrie.valor | currency:'BRL'}}
+      </strong><br>
+      <span class="badge badge-light">{{entrie.pagoPendente}}</span>      
+      </td>
+      <td class="text-center">
         <a [routerLink]="[entrie.key, 'edit']" class="btn btn-outline-info btn-sm mr-1">Editar</a>
         <button (click)="excluir(entrie.key)" class="btn btn-outline-danger btn-sm">Excluir</button>
       </td>

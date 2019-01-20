@@ -56,8 +56,7 @@
                        id="valor" 
                        type="int" 
                        class="form-control text-right"  
-                       required [min]="0"> 
-           
+                       required [min]="0">                  
             </div>   
        </div>
 
@@ -86,10 +85,10 @@
         <div class="form-group col-md-2">
             <label for="pago">Pago</label>
             <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" name="pago" id="pago" #pago="ngModel" [(ngModel)]="entrie.pago">
-                <label ngbButtonLabel class="btn-primary">
+                <label ngbButtonLabel class="btn-primary btn-sm-2">
                     <input ngbButton type="radio" value=true> Pago
                 </label>
-                <label ngbButtonLabel class="btn-primary">
+                <label ngbButtonLabel class="btn-primary btn-sm">
                     <input ngbButton type="radio" value=false> Pendente
                 </label>
             </div>          
@@ -100,7 +99,7 @@
         <div class="form-group col-md-3">
             <label for="category">Categoria</label>
             <select #category="ngModel" [(ngModel)]="entrie.category" name="category" id="category"  class="form-control" required>     
-                <option *ngFor="let c of categories$ | async" [value]="c.key">
+                <option *ngFor="let c of categories$ | async" [value]="c.nome">
                     {{ c.nome }}                                    
             </select>
         </div>

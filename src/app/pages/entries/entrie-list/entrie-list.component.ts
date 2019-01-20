@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EntrieService } from '../shared/entrie.service';
+import { Entrie } from '../shared/entrie.model';
+
 
 @Component({
   selector: 'app-entrie-list',
@@ -9,13 +11,15 @@ import { EntrieService } from '../shared/entrie.service';
 })
 export class EntrieListComponent implements OnInit {
 
-  entries: Observable<any>;
+  entries;
+  
 
   constructor(private entrieService: EntrieService) { }
 
   ngOnInit() {
     this.entries = this.entrieService.getAll();
   }
+
 
   excluir(entrieId) {        
     if (!confirm('Confirma a exclusão dessa Categoria')) return;

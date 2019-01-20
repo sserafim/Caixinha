@@ -16,5 +16,9 @@ export class Entrie {
         receita: 'Receita'
     };
 
+    get pagoPendente() {
+        return this.pago ? 'Pago' : 'Pendente';
+    }
+
 
 }

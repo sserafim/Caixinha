@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Entrie } from './entrie.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +23,22 @@ export class EntrieService {
                    return changes.map(ent => ({key: ent.payload.key, ...ent.payload.val() }));
               }));
   }
- 
+
+/*   getAllX(): Observable<Entrie> {    
+    const lancamentos =  this.db.list('/entries/').snapshotChanges()
+          .pipe(map((action: any) => {
+            const key = action.key;
+            const items = action.payload.val();
+            return new Entrie(key, items);
+          }));
+          console.log('passou aqui ', lancamentos);
+          return lancamentos;
+  } */
+
   get(entrieId) {
     return this.db.object('/entries/' + entrieId);
   }
+
  
   update(entrieId, entrie) {
     return this.db.object('/entries/' + entrieId).update(entrie);
