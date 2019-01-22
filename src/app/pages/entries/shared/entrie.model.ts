@@ -8,17 +8,18 @@ export class Entrie {
     data: string;
     pago: boolean;
     category: string;
+    
 
-    constructor() {}
+    constructor() {
+    }
 
     static types = {
         despesa: 'Despesa',
         receita: 'Receita'
     };
 
-    get pagoPendente() {
-        return this.pago ? 'Pago' : 'Pendente';
+    get pagoPendente(): boolean {
+        return this.pago;
     }
-
 
 }
