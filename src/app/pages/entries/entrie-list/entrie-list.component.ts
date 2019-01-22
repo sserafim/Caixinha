@@ -22,7 +22,6 @@ export class EntrieListComponent implements OnInit, OnDestroy {
    ngOnInit() {
     // this.entries = this.entrieService.getAll();
     this.entriesX =  this.carregaEntrie();
-    console.log('passou aqui ', this.entriesX);
   }
 
   carregaEntrie(): Entrie[] {

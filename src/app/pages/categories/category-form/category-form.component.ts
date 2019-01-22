@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 })
 export class CategoryFormComponent implements OnInit {
 
-  category: {} = new Category;
+  category: any = new Category;
   id;
 
   constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {

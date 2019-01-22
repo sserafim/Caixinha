@@ -1,35 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CustomFormsModule } from 'ng2-validation';
-
+import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
+
+import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    CoreModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    FormsModule,
-    NgbModule,
-    CustomFormsModule,
-    BrowserAnimationsModule
+    AngularFireModule.initializeApp(environment.firebase)
+    
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [    
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
